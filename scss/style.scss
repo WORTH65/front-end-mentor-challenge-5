@@ -46,6 +46,22 @@ body {
     background-color: $offWhite;
     color: $darkGrayBlue;
     font-family: 'Inter', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: $red;
+    &::-webkit-scrollbar {
+        width: .6em;
+    }
+    &::-webkit-scrollbar-track {
+        border: 2px solid $offWhite;
+    }
+    &::-webkit-scrollbar-thumb {
+        background-color: $red;
+        border: 2px solid $offWhite;
+        border-radius: 100vw;
+        &:hover {
+            background-color: $orange;
+        }
+    }
 }
 html, body {
     width: 100vw;
@@ -76,20 +92,19 @@ h2 {
 }
 .btn {
     display: inline-block;
+    width: max-content;
     cursor: pointer;
     &.btnPrimary {
         color: $offWhite;
         background-color: $red;
-        border: 1px solid transparent;
         text-transform: uppercase;
         letter-spacing: .4em;
         font-weight: 700;
         padding: 1em 2em;
         transition: .3s;
         &:hover {
-            background-color: transparent;
-            color: $red;
-            border: 1px solid $red;
+            background-color: $darkBlue;
+            color: $offWhite;
         }
     }
 }
@@ -164,6 +179,12 @@ h2 {
         align-items: flex-start;
         justify-content: space-between;
         list-style: none;
+        a {
+            transition: .3s;
+            &:hover {
+                color: $red;
+            }
+        }
         & > *:not(:last-child) {
             margin-bottom: 1.4em;
         }
@@ -212,6 +233,11 @@ h2 {
         .newPost h3 {
             margin-bottom: 1em;
             font-size: 1.4rem;
+            cursor: pointer;
+            transition: .3s;
+            &:hover {
+                color: $orange;
+            }
         }
         .newPostBorder {
             border-top: 1px solid $darkGrayBlue;
@@ -226,6 +252,7 @@ h2 {
 .moreArticlesGrid {
     display: grid;
     grid-template-columns: 1fr;
+    margin-top: 2em;
     gap: 2em;
     .moreArticlesChild {
         display: grid;
@@ -241,7 +268,120 @@ h2 {
         }
         h3 {
             font-size: 1.1rem;
+            cursor: pointer;
+            transition: .3s;
+            &:hover {
+                color: $red;
+            }
         }
     }
 }
 // /More Articles Section
+
+// Media Queries
+@media only screen and (min-width: 576px) {
+    .heroGrid {
+        .gridItemLeft {
+            grid-template-columns: 3fr 2fr;
+        }
+        .heroImgContainer {
+            grid-column: span 5;
+            img {
+                width: 100%;
+            }
+        }
+        .heroText {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+    }
+    .moreArticlesGrid {
+        grid-template-columns: repeat(2, 2fr);
+    }
+    .moreArticlesImg {
+        img {
+            height: 8em;
+        }
+    }
+}
+@media only screen and (min-width: 768px) {
+    .siteHeader {
+        .hamburgerIcon {
+            display: none;
+        }
+        .headerMenu {
+            position: static;
+            min-height: auto;
+            padding: 0;
+        }
+        .headerLinks {
+            flex-direction: row;
+            justify-content: flex-end;       
+            gap: 2em;
+            .headerLink {
+                color: $darkGrayBlue;
+            }
+            & > *:not(:last-child) {
+                margin: 0;
+            }
+        }
+    }
+}
+@media only screen and (min-width: 992px) {
+    body {
+        padding: 2em 0;
+    }
+    h2 {
+        font-size: 2.4rem;
+    }
+    .container {
+        max-width: 80%;
+    }
+    .heroGrid {
+        grid-template-columns: 2fr 1fr;
+        h1 {
+            font-size: 3em;
+        }
+        .heroImgSm {
+            display: none;
+        }
+        .heroImgLg {
+            display: block;
+            height: 20em;
+        }
+        .heroImgContainer {
+            grid-column: span 2;
+        }
+        .gridItemRight {
+            h2 {
+                margin-bottom: .8em!important;
+            }
+        }
+    }
+    .moreArticlesGrid {
+        grid-template-columns: repeat(3, 1fr);
+        grid-column: span 3;
+        gap: 1em;
+        margin-top: 4em;
+        .moreArticlesChild {
+            gap: 1em;
+        }
+        .moreArticlesChild:nth-child(3n) {
+            margin-left: .365em;
+        }
+        .moreArticlesImg img {
+            height: 10em;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+@media only screen and (max-width: 350px) {
+    html {
+        font-size: 13px;
+    }
+    .heroGrid h1 {
+        font-size: 3.6rem;
+    }
+}
