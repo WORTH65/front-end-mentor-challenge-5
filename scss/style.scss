@@ -1,0 +1,150 @@
+// Variables
+$orange:hsl(35, 77%, 62%);
+$red:hsl(5, 85%, 63%);
+$offWhite:hsl(36, 100%, 99%);
+$grayBlue:hsl(233, 8%, 79%);
+$darkGrayBlue:hsl(236, 13%, 42%);
+$darkBlue:hsl(240, 100%, 5%);
+
+// Font CDN
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+// Page Setup
+* {
+    margin: 0;
+    padding: 0;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+a {
+    text-decoration: none;
+}
+button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+img, svg, video, picture {
+    display: block;
+    max-width: 100%;
+    &::selection {
+        background-color: transparent;
+    }
+    &::-moz-selection {
+        background-color: transparent;
+    }
+}
+input, textarea, button, select {
+    font: inherit;
+}
+html {
+    font-size: 15px;
+}
+body {
+    min-height: 100vh;
+    background-color: $offWhite;
+    color: $grayBlue;
+    font-family: 'Inter', sans-serif;
+}
+html, body {
+    width: 100vw;
+    overflow-x: hidden;
+}
+// Typography
+a, p {
+    font-size: 1rem;
+    font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+}
+// Global Style Classes
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+}
+.btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+}
+.visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+}
+
+// Actual Page Styling
+// Header Section
+.headerBackdrop {
+    position: fixed;
+    background-color: rgba(0,0,0,.5);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0;
+    transition: .3s;
+    z-index: 9990;
+    &.show {
+        pointer-events: auto;
+        opacity: 1;
+    }
+}
+.siteHeader {
+    padding: 2.6em 0;
+    overflow-x: hidden;
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .siteLogo {
+        height: 2.6em;
+    }
+    .hamburgerIcon {
+        cursor: pointer;
+        img {
+            width: 2.4em;
+        }
+    }
+    .headerMenu {
+        position: absolute;
+        top: 0;
+        right: -100%;
+        background-color: $offWhite;
+        width: 64%;
+        min-height: 100vh;
+        min-height: 100dvh;
+        height: auto;
+        text-align: right;
+        padding: 3em 2em;
+        transition: .3s;
+        z-index: 9999;
+        &.show {
+            right: 0;
+        }
+        .hamburgerIcon {
+            margin-bottom: 6em;
+        }
+    }
+    .headerLinks {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+        list-style: none;
+        & > *:not(:last-child) {
+            margin-bottom: 1.4em;
+        }
+    }
+    .headerLink {
+        color: $darkBlue;
+    }
+}
+// /Header Section
